@@ -1,4 +1,4 @@
-.faq_div p{
+.faq_div p {
     font-weight: 500;
     margin: 0;
     padding: 0;
@@ -6,53 +6,268 @@
     margin-top: 1rem;
     line-height: 1.8rem;
 }
- 
+
 .title {
     font-size: 4rem;
+    color: #ff3131 !important; /* Bright red for title */
+    text-shadow: 0 0 20px rgba(255, 49, 49, 0.6);
 }
+
 .MuiAccordion-root {
-    /* background-color: #D9D9D933 !important; */
-    background-color: #333333 !important; /* Dark background for the accordion */
-    border: 1px solid  #eeea0e77;  /* Yellow border */
-    border-radius: 0.5rem !important;
-    box-shadow: none;
+    /* What was previously hover state is now initial */
+    background: linear-gradient(135deg,
+    rgba(0, 0, 0, 0.8) 0%,
+    rgba(255, 49, 49, 0.05) 100%
+    ) !important;
+    border: 0 !important; /* Enhanced border initially */
+    border-radius: 8px !important;
+    box-shadow: 0 8px 25px rgba(255, 49, 49, 0.2),
+    inset 0 1px 0 rgba(255, 49, 49, 0.2) !important; /* Enhanced shadows initially */
     margin-bottom: 1rem;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    transform: translateY(-2px); /* Initially elevated */
+}
+
+.MuiAccordion-root:hover {
+    /* What was previously initial state is now hover */
+    border-color: rgba(255, 49, 49, 0.3) !important; /* Reduced border on hover */
+    box-shadow: 0 4px 15px rgba(255, 49, 49, 0.1),
+    inset 0 1px 0 rgba(255, 49, 49, 0.1) !important; /* Reduced shadows on hover */
+    transform: translateY(0); /* Back to normal position on hover */
 }
 
 .MuiAccordionSummary-expandIconWrapper {
-    color: white !important;
+    color: #ff6161 !important; /* Enhanced color initially */
+    transition: all 0.3s ease;
+    filter: drop-shadow(0 0 8px rgba(255, 49, 49, 0.6)); /* Glow effect initially */
 }
 
-.faq_div{
+.MuiAccordionSummary-expandIconWrapper:hover {
+    color: #ff3131 !important; /* Normal color on hover */
+    filter: none; /* Remove glow on hover */
+}
+
+.faq_div {
     width: 70%;
     margin: 0 auto;
-    color:#fff;
+    color: #fff;
+}
 
-}
 .MuiAccordionSummary-root {
-    background-color: #222222 !important; /* Slightly lighter background for the summary */
-    border-bottom: 1px solid #eeea0e; /* Yellow border between summary and details */
-    border-radius: 0.5rem !important;
+    /* Enhanced background initially */
+    /*background: linear-gradient(90deg,*/
+    /*rgba(255, 49, 49, 0.15) 0%,*/
+    /*rgba(218, 37, 32, 0.1) 50%,*/
+    /*rgba(255, 49, 49, 0.15) 100%*/
+    /*) !important;*/
+    background: black !important;
+    border-bottom: 1px solid rgba(255, 49, 49, 0.2) !important;
+    border-radius: 8px 8px 0 0 !important;
+    padding: 16px 20px !important;
+    position: relative;
+    overflow: hidden;
 }
+
+.MuiAccordionSummary-root::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 100%; /* Start sweep effect visible initially */
+    width: 100%;
+    height: 100%;
+    /*background: linear-gradient(90deg,*/
+    /*transparent,*/
+    /*rgba(255, 49, 49, 0.1),*/
+    /*transparent*/
+    /*);*/
+    background: black !important;
+    transition: left 0.5s ease;
+}
+
+.MuiAccordionSummary-root:hover::before {
+    left: -100%; /* Hide sweep effect on hover */
+}
+
+.MuiAccordionSummary-root:hover {
+    /* Normal background on hover */
+    background: linear-gradient(90deg,
+    rgba(218, 37, 32, 0.1) 0%,
+    rgba(255, 49, 49, 0.05) 50%,
+    rgba(218, 37, 32, 0.1) 100%
+    ) !important;
+}
+
 .MuiAccordionSummary-content {
     margin: 0 !important;
+    z-index: 1;
+    position: relative;
 }
 
 /* Accordion Details */
 .MuiAccordionDetails-root {
-    background-color: #303030 !important; /* Dark background for the details */
-    border-top: 1px solid #ffcc00; /* Yellow border between summary and details */
-    border-radius: 0 0 0.5rem 0.5rem !important;
+    /*background: linear-gradient(180deg,*/
+    /*rgba(0, 0, 0, 0.6) 0%,*/
+    /*rgba(218, 37, 32, 0.05) 100%*/
+    /*) !important;*/
+    background: black !important;
+    border-top: 1px solid rgba(255, 49, 49, 0.2) !important;
+    border-radius: 0 0 8px 8px !important;
+    padding: 20px !important;
+    position: relative;
 }
 
-/* .MuiTypography-root{
-    color: black !important;
-} */
+.MuiAccordionDetails-root::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    /*background: linear-gradient(90deg,*/
+    /*transparent 0%,*/
+    /*rgba(255, 49, 49, 0.6) 20%,*/
+    /*rgba(218, 37, 32, 0.8) 50%,*/
+    /*rgba(255, 49, 49, 0.6) 80%,*/
+    /*transparent 100%*/
+    /*);*/
+    background: black !important;
+}
 
-@media only screen and (max-width:1200px){
-    .faq_div{
-        width:95%;
+/* Typography styling */
+.MuiTypography-root {
+    color: #fff !important;
+}
+
+/* Question text with red accent */
+.MuiAccordionSummary-root .MuiTypography-root {
+    color: #fff !important;
+    font-weight: 600 !important;
+    text-shadow: 0 0 10px rgba(255, 49, 49, 0.3);
+    position: relative;
+}
+
+/* Answer text */
+.MuiAccordionDetails-root .MuiTypography-root {
+    color: rgba(255, 255, 255, 0.9) !important;
+    line-height: 1.6 !important;
+    font-weight: 400 !important;
+}
+
+/* Red separator lines between accordions */
+.MuiAccordion-root:not(:last-child)::after {
+    content: '';
+    display: block;
+    height: 2px;
+    /*background: linear-gradient(90deg,*/
+    /*transparent 0%,*/
+    /*rgba(255, 49, 49, 0.6) 20%,*/
+    /*rgba(218, 37, 32, 0.8) 50%,*/
+    /*rgba(255, 49, 49, 0.6) 80%,*/
+    /*transparent 100%*/
+    /*);*/
+    background: black !important;
+    margin: 1.5rem 0;
+    border-radius: 1px;
+    box-shadow: 0 0 10px rgba(255, 49, 49, 0.3);
+}
+
+/* Expanded state special styling - enhanced initially */
+.MuiAccordion-root.Mui-expanded {
+    border-color: rgba(255, 49, 49, 0.5) !important;
+    box-shadow: 0 12px 30px rgba(255, 49, 49, 0.15),
+    inset 0 1px 0 rgba(255, 49, 49, 0.2) !important;
+}
+
+.MuiAccordion-root.Mui-expanded .MuiAccordionSummary-root {
+    /*background: linear-gradient(90deg,*/
+    /*rgba(255, 49, 49, 0.2) 0%,*/
+    /*rgba(218, 37, 32, 0.15) 50%,*/
+    /*rgba(255, 49, 49, 0.2) 100%*/
+    /*) !important;*/
+    background: black !important;
+}
+
+/* Expanded state on hover - back to normal */
+.MuiAccordion-root.Mui-expanded:hover {
+    border-color: rgba(255, 49, 49, 0.3) !important;
+    box-shadow: 0 4px 15px rgba(255, 49, 49, 0.1),
+    inset 0 1px 0 rgba(255, 49, 49, 0.1) !important;
+}
+
+.MuiAccordion-root.Mui-expanded:hover .MuiAccordionSummary-root {
+    background: linear-gradient(90deg,
+    rgba(218, 37, 32, 0.1) 0%,
+    rgba(255, 49, 49, 0.05) 50%,
+    rgba(218, 37, 32, 0.1) 100%
+    ) !important;
+}
+
+@media only screen and (max-width: 1200px) {
+    .faq_div {
+        width: 95%;
         margin: 0 auto;
-
     }
+}
+
+.Card {
+    background-color: transparent !important;
+}
+
+/* Additional tech effects */
+.MuiAccordion-root {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(-2px); /* End in elevated position */
+    }
+}
+
+/* Focus effects - enhanced initially */
+.MuiAccordionSummary-root:focus-within {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(255, 49, 49, 0.4);
+}
+
+/* Custom accordion styling */
+.accordion-container {
+    width: 100%;
+}
+
+.accordion-item {
+    margin-bottom: 1rem;
+    background: transparent !important;
+}
+
+.accordion-trigger {
+    background-color: transparent !important; /* Enhanced initially */
+    border: 0 !important;
+    outline: none !important;
+    transition: all 0.3s ease !important;
+    border-radius: 8px;
+}
+
+.accordion-trigger:hover {
+    background-color: transparent !important; /* Normal on hover */
+    border: none !important;
+}
+
+.accordion-trigger:focus {
+    background-color: rgba(255, 49, 49, 0.15) !important;
+    outline: 2px solid rgba(255, 49, 49, 0.4) !important;
+}
+
+.accordion-panel {
+    background-color: black !important;
+}
+
+.MuiAccordion-root .MuiAccordionSummary-root{
+    background: black !important;
 }
