@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from '../ContactUs/contact.module.css';
+// import styles from '../ContactUs/contact.module.css';
 import './faq.css'
 
 const data = [
@@ -111,7 +111,7 @@ const AccordionPanel = ({ children, isOpen }) => {
 
 function Faq_test() {
   return (
-    <div className={styles.cov}>
+    <div className={"cov"}>
       <h1 className="title">FAQS</h1>
       <div className="faq_div">
         <Accordion>
